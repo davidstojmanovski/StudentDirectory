@@ -1,0 +1,22 @@
+﻿
+@{
+    var grid = Html.DevExpress().GridView(settings =>
+    {
+        settings.Name = "detailGrid_" + ViewData["BI"];
+        settings.SettingsDetail.MasterGridName = "GridView";
+        settings.CallbackRouteValues = new { Controller = "Student", Action = "MasterDetail", BI = ViewData["BI"] };
+        settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
+
+        settings.KeyFieldName = "BI";
+        //settings.Columns.Add("BI");
+        settings.Columns.Add("PredmetId");
+        settings.Columns.Add("Ocena");
+
+        settings.Settings.ShowFooter = true;
+
+
+    });
+}
+@grid.Bind(Model).GetHtml()
+
+
